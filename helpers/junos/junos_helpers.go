@@ -1,4 +1,4 @@
-package gonetconf
+package junos_helpers
 
 import (
 	"bufio"
