@@ -5,9 +5,9 @@ import (
 	"net"
 	"time"
 
-	lowlevel "github.com/arsonistgopher/go-netconf/drivers/ssh/lowlevel"
-	rpc "github.com/arsonistgopher/go-netconf/rpc"
-	session "github.com/arsonistgopher/go-netconf/session"
+	lowlevel "github.com/davedotdev/go-netconf/drivers/ssh/lowlevel"
+	rpc "github.com/davedotdev/go-netconf/rpc"
+	session "github.com/davedotdev/go-netconf/session"
 	"golang.org/x/crypto/ssh"
 )
 

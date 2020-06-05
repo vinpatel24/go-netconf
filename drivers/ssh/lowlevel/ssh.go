@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	session "github.com/arsonistgopher/go-netconf/session"
-	transport "github.com/arsonistgopher/go-netconf/transport"
+	session "github.com/davedotdev/go-netconf/session"
+	transport "github.com/davedotdev/go-netconf/transport"
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/agent"
 )

@@ -7,8 +7,8 @@ package netconf
 import (
 	"os/exec"
 
-	session "github.com/arsonistgopher/go-netconf/session"
-	transport "github.com/arsonistgopher/go-netconf/transport"
+	session "github.com/davedotdev/go-netconf/session"
+	transport "github.com/davedotdev/go-netconf/transport"
 )
 
 // TransportJunos maintains the information necessary to communicate with Junos
