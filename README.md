@@ -1,6 +1,6 @@
 # netconf
 
-[![GoDoc](https://godoc.org/github.com/arsonistgopher/go-netconf/netconf?status.svg)](https://godoc.org/github.com/arsonistgopher/go-netconf/netconf)
+[![GoDoc](https://godoc.org/github.com/davedotdev/go-netconf/netconf?status.svg)](https://godoc.org/github.com/davedotdev/go-netconf/netconf)
 [![Go Report Card](https://goreportcard.com/badge/github.com/davedotdev/go-netconf)](https://goreportcard.com/report/github.com/davedotdev/go-netconf)
 [![Build Status](https://travis-ci.org/davedotdev/go-netconf.svg?branch=master)](https://travis-ci.org/davedotdev/go-netconf)
 
