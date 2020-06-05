@@ -68,7 +68,6 @@ func NewSession(t transport.Transport) (*Session, error) {
 	// Receive Servers Hello message
 	serverHello, err := t.ReceiveHello()
 	if err != nil {
-		panic(err)
 		return nil, err
 	}
 	s.SessionID = serverHello.SessionID
