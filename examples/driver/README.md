@@ -15,10 +15,9 @@ import (
 	"os"
 	"strings"
 
-        // Currently this code resides on a private repo until the required changes have been merged.
-	driver "github.com/arsonistgopher/go-netconf/drivers/driver"
-	junosdriver "github.com/arsonistgopher/go-netconf/drivers/junos"
-	sshdriver "github.com/arsonistgopher/go-netconf/drivers/ssh"
+	driver "github.com/davedotdev/go-netconf/drivers/driver"
+	junosdriver "github.com/davedotdev/go-netconf/drivers/junos"
+	sshdriver "github.com/davedotdev/go-netconf/drivers/ssh"
 
 	"golang.org/x/crypto/ssh"
 )

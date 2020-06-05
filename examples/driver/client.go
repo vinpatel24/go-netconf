@@ -8,7 +8,6 @@ import (
 	"os"
 	"strings"
 
-	// Currently the code required for this demo is on a private repo. Once it's merged, it can be changed.
 	driver "github.com/davedotdev/go-netconf/drivers/driver"
 	junosdriver "github.com/davedotdev/go-netconf/drivers/junos"
 	sshdriver "github.com/davedotdev/go-netconf/drivers/ssh"

@@ -2,25 +2,22 @@ sudo: false
 language: go
 go:
   - "1.14.x"
-  - "1.13.x"
-  - "1.12.x"
-  - "1.11.x"
   - master
 matrix:
   allow_failures:
-    - go: master
-    - go: "1.13.x"
+    - go: "1.14.x"
   fast_finish: true
 
 install: 
-  - go get -d -t -v ./...
+  - go get github.com/davedotdev/go-netconf
 
 before_script:
   - go get golang.org/x/lint/golint     # Linter
 
 script:
   - diff -u <(echo -n) <(gofmt -d .)         # Run gofmt and display diff
-  - go test -v ./...                         # Run all the tests with the race detector enabled
+
+  #  - go test -v ./...                         # Run all the tests with the race detector enabled
   - go vet ./...                             # go vet is the official Go static analyzer
   - golint ./...                             # one last linter
   - cd examples/driver
