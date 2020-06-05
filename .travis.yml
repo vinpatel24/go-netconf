@@ -16,7 +16,7 @@ install:
   - go get -d -t -v ./...
 
 before_script:
-  - go get github.com/golang/lint/golint     # Linter
+  - go get golang.org/x/lint/golint     # Linter
 
 script:
   - diff -u <(echo -n) <(gofmt -d .)         # Run gofmt and display diff
