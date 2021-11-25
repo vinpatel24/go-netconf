@@ -132,6 +132,10 @@ func (g *GoNCClient) ReadGroup(applygroup string) (string, error) {
 	}
 
 	parsedGroupData, err := parseGroupData(reply.Data)
+	if err != nil {
+		return "", err
+	}
+
 	return parsedGroupData, nil
 }
 
@@ -146,7 +150,7 @@ func (g *GoNCClient) UpdateRawConfig(applygroup string, netconfcall string, comm
 		log.Fatal(err)
 	}
 
-	reply, err := g.Driver.SendRaw(deleteString)
+	_, err = g.Driver.SendRaw(deleteString)
 	if err != nil {
 		return "", err
 	}
@@ -157,12 +161,12 @@ func (g *GoNCClient) UpdateRawConfig(applygroup string, netconfcall string, comm
 		log.Fatal(err)
 	}
 
-	reply, err = g.Driver.SendRaw(groupString)
+	reply, err := g.Driver.SendRaw(groupString)
 	if err != nil {
 		return "", err
 	}
 
-	if commit == true {
+	if commit {
 		_, err = g.Driver.SendRaw(commitStr)
 		if err != nil {
 			return "", err
@@ -197,6 +201,36 @@ func (g *GoNCClient) DeleteConfig(applygroup string) (string, error) {
 	}
 
 	_, err = g.Driver.SendRaw(commitStr)
+	if err != nil {
+		return "", err
+	}
+
+	output := strings.Replace(reply.Data, "\n", "", -1)
+
+	err = g.Driver.Close()
+
+	g.Lock.Unlock()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return output, nil
+}
+
+// DeleteConfigNoCommit is a wrapper for driver.SendRaw()
+// Does not provide mandatory commit unlike DeleteConfig()
+func (g *GoNCClient) DeleteConfigNoCommit(applygroup string) (string, error) {
+
+	deleteString := fmt.Sprintf(deleteStr, applygroup, applygroup)
+
+	g.Lock.Lock()
+	err := g.Driver.Dial()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	reply, err := g.Driver.SendRaw(deleteString)
 	if err != nil {
 		return "", err
 	}
@@ -288,7 +322,7 @@ func (g *GoNCClient) SendRawConfig(netconfcall string, commit bool) (string, err
 		return "", err
 	}
 
-	if commit == true {
+	if commit {
 		_, err = g.Driver.SendRaw(commitStr)
 		if err != nil {
 			return "", err
@@ -381,4 +415,3 @@ func NewClient(username string, password string, sshkey string, address string, 
 
 	return &GoNCClient{Driver: nconf}, nil
 }
-
