@@ -20,9 +20,7 @@ This library is a simple NETCONF client based on [RFC6241](http://tools.ietf.org
 * Please use `git clone` because this is a library and not an application
 
 ```bash
-cd $GOPATH/src/github.com
-mkdir arsonistgopher && cd arsonistgopher
-git clone https://github.com/arsonistgopher/go-netconf
+go get github.com/davedotdev/go-netconf
 ```
 
 ## Example
@@ -71,4 +69,4 @@ Authors and Contributors
 * [Jade Auer](https://github.com/jda)
 * [Wayne Tucker](https://github.com/wtucker)
 * [Christian Giese](https://github.com/GIC-de), Juniper Networks
-* [David Gee](https://github.com/arsonistgopher), Juniper Networks, IPEngineer.net
+* [David Gee](https://github.com/davedotdev), Juniper Networks, IPEngineer.net
