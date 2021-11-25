@@ -152,34 +152,37 @@ func (g *GoNCClient) UpdateRawConfig(applygroup string, netconfcall string, comm
 
 	_, err = g.Driver.SendRaw(deleteString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	groupString := fmt.Sprintf(groupStrXML, netconfcall)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	reply, err := g.Driver.SendRaw(groupString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	if commit {
 		_, err = g.Driver.SendRaw(commitStr)
 		if err != nil {
-			return "", err
+			errInternal := g.Driver.Close()
+			g.Lock.Unlock()
+			return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 		}
 	}
 
 	err = g.Driver.Close()
 
-	g.Lock.Unlock()
-
 	if err != nil {
-		return "", err
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver close error: %+s", err)
 	}
+
+	g.Lock.Unlock()
 
 	return reply.Data, nil
 }
@@ -197,12 +200,16 @@ func (g *GoNCClient) DeleteConfig(applygroup string) (string, error) {
 
 	reply, err := g.Driver.SendRaw(deleteString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	_, err = g.Driver.SendRaw(commitStr)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	output := strings.Replace(reply.Data, "\n", "", -1)
@@ -232,18 +239,21 @@ func (g *GoNCClient) DeleteConfigNoCommit(applygroup string) (string, error) {
 
 	reply, err := g.Driver.SendRaw(deleteString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	output := strings.Replace(reply.Data, "\n", "", -1)
 
 	err = g.Driver.Close()
 
-	g.Lock.Unlock()
-
 	if err != nil {
-		log.Fatal(err)
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver close error: %+s", err)
 	}
+
+	g.Lock.Unlock()
 
 	return output, nil
 }
@@ -255,11 +265,13 @@ func (g *GoNCClient) SendCommit() error {
 	err := g.Driver.Dial()
 
 	if err != nil {
+		g.Lock.Unlock()
 		return err
 	}
 
 	_, err = g.Driver.SendRaw(commitStr)
 	if err != nil {
+		g.Lock.Unlock()
 		return err
 	}
 
@@ -319,19 +331,24 @@ func (g *GoNCClient) SendRawConfig(netconfcall string, commit bool) (string, err
 
 	reply, err := g.Driver.SendRaw(groupString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	if commit {
 		_, err = g.Driver.SendRaw(commitStr)
 		if err != nil {
-			return "", err
+			errInternal := g.Driver.Close()
+			g.Lock.Unlock()
+			return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 		}
 	}
 
 	err = g.Driver.Close()
 
 	if err != nil {
+		g.Lock.Unlock()
 		return "", err
 	}
 
@@ -353,7 +370,9 @@ func (g *GoNCClient) ReadRawGroup(applygroup string) (string, error) {
 
 	reply, err := g.Driver.SendRaw(getGroupXMLString)
 	if err != nil {
-		return "", err
+		errInternal := g.Driver.Close()
+		g.Lock.Unlock()
+		return "", fmt.Errorf("driver error: %+v, driver close error: %+s", err, errInternal)
 	}
 
 	err = g.Driver.Close()
