@@ -1,4 +1,4 @@
-# netconf
+# Go-NETCONF
 
 [![GoDoc](https://godoc.org/github.com/davedotdev/go-netconf/netconf?status.svg)](https://godoc.org/github.com/davedotdev/go-netconf/netconf)
 [![Go Report Card](https://goreportcard.com/badge/github.com/davedotdev/go-netconf)](https://goreportcard.com/report/github.com/davedotdev/go-netconf)
