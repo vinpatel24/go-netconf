@@ -46,6 +46,7 @@ Please note, that two transport types exist; one for direct use on Junos and the
 
 ## Documentation
 You can view full API documentation at GoDoc: http://godoc.org/github.com/arsonistgopher/go-netconf
+*The docs need updating. For now please review the source code*
 
 ## License
 (BSD 2)
