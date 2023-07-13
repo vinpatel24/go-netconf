@@ -1,4 +1,4 @@
-module github.com/davedotdev/go-netconf
+module github.com/vinpatel24/go-netconf
 
 go 1.14
 
