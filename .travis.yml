@@ -9,7 +9,7 @@ matrix:
   fast_finish: true
 
 install: 
-  - go get github.com/davedotdev/go-netconf/...
+  - go get github.com/vinpatel24/go-netconf/...
 
 before_script:
   - go get golang.org/x/lint/golint     # Linter
