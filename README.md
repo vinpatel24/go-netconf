@@ -1,8 +1,8 @@
 # Go-NETCONF
 
-[![GoDoc](https://godoc.org/github.com/davedotdev/go-netconf/netconf?status.svg)](https://godoc.org/github.com/davedotdev/go-netconf/netconf)
-[![Go Report Card](https://goreportcard.com/badge/github.com/davedotdev/go-netconf)](https://goreportcard.com/report/github.com/davedotdev/go-netconf)
-[![Build Status](https://travis-ci.org/davedotdev/go-netconf.svg?branch=master)](https://travis-ci.org/davedotdev/go-netconf)
+[![GoDoc](https://godoc.org/github.com/vinpatel24/go-netconf/netconf?status.svg)](https://godoc.org/github.com/vinpatel24/go-netconf/netconf)
+[![Go Report Card](https://goreportcard.com/badge/github.com/vinpatel24/go-netconf)](https://goreportcard.com/report/github.com/vinpatel24/go-netconf)
+[![Build Status](https://travis-ci.org/vinpatel24/go-netconf.svg?branch=master)](https://travis-ci.org/vinpatel24/go-netconf)
 
 This library is a simple NETCONF client based on [RFC6241](http://tools.ietf.org/html/rfc6241) and [RFC6242](http://tools.ietf.org/html/rfc6242) (although not fully compliant yet).
 
@@ -20,7 +20,7 @@ This library is a simple NETCONF client based on [RFC6241](http://tools.ietf.org
 * Please use `git clone` because this is a library and not an application
 
 ```bash
-go get github.com/davedotdev/go-netconf
+go get github.com/vinpatel24/go-netconf
 ```
 
 ## Example
@@ -70,4 +70,4 @@ Authors and Contributors
 * [Jade Auer](https://github.com/jda)
 * [Wayne Tucker](https://github.com/wtucker)
 * [Christian Giese](https://github.com/GIC-de), Juniper Networks
-* [David Gee](https://github.com/davedotdev), Juniper Networks, IPEngineer.net
+* [David Gee](https://github.com/vinpatel24), Juniper Networks, IPEngineer.net

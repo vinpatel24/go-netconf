@@ -3,9 +3,9 @@ package netconf
 import (
 	"time"
 
-	lowlevel "github.com/davedotdev/go-netconf/drivers/junos/lowlevel"
-	rpc "github.com/davedotdev/go-netconf/rpc"
-	session "github.com/davedotdev/go-netconf/session"
+	lowlevel "github.com/vinpatel24/go-netconf/drivers/junos/lowlevel"
+	rpc "github.com/vinpatel24/go-netconf/rpc"
+	session "github.com/vinpatel24/go-netconf/session"
 )
 
 // DriverJunos type is for creating a Junos based driver. Maintains state for session and connection. Implements Driver{}

@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	driver "github.com/davedotdev/go-netconf/drivers/driver"
-	junosdriver "github.com/davedotdev/go-netconf/drivers/junos"
-	sshdriver "github.com/davedotdev/go-netconf/drivers/ssh"
+	driver "github.com/vinpatel24/go-netconf/drivers/driver"
+	junosdriver "github.com/vinpatel24/go-netconf/drivers/junos"
+	sshdriver "github.com/vinpatel24/go-netconf/drivers/ssh"
 
 	"golang.org/x/crypto/ssh"
 )

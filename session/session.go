@@ -13,8 +13,8 @@ package netconf
 import (
 	"encoding/xml"
 
-	rpc "github.com/davedotdev/go-netconf/rpc"
-	transport "github.com/davedotdev/go-netconf/transport"
+	rpc "github.com/vinpatel24/go-netconf/rpc"
+	transport "github.com/vinpatel24/go-netconf/transport"
 )
 
 // Session defines the necessary components for a NETCONF session
